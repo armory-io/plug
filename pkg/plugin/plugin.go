@@ -78,6 +78,8 @@ func (l *Loader) LoadMetadata() (*Metadata, error) {
 	rel := m.Releases[0]
 	rel.URL = l.BinaryAddress
 
+	rel.Version = strings.TrimPrefix(rel.Version, "v")
+
 	return &m, nil
 }
 

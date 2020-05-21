@@ -60,14 +60,14 @@ func New(host string, port int, pluginDir string) (*Server, error) {
 func (s *Server) metadataHandler(w http.ResponseWriter, r *http.Request) {
 	m, err := s.loader.LoadMetadata()
 	if err != nil {
-		// TODO: return HTTP error code.
+		// TODO: return HTTP error code like a real server...
 		log.Fatalf("Could not load metadata: %v", err)
 		return
 	}
 
 	w.Header().Set("Content-Type", "application/json")
 
-	if err := json.NewEncoder(w).Encode(m); err != nil {
+	if err := json.NewEncoder(w).Encode([]*plugin.Metadata{m}); err != nil {
 		log.Fatalf("Could not encode metadata in response: %v", err)
 	}
 }
@@ -75,7 +75,7 @@ func (s *Server) metadataHandler(w http.ResponseWriter, r *http.Request) {
 func (s *Server) binaryHandler(w http.ResponseWriter, r *http.Request) {
 	p, err := s.loader.LocateBinary()
 	if err != nil {
-		// TODO: return HTTP error code.
+		// TODO: return HTTP error code like a real server...
 		log.Fatalf("Could not load binary: %v", err)
 	}
 
