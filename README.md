@@ -3,7 +3,7 @@
 ## Installation
 
 You'll need to have the `go` toolchain setup correctly.
-Once you do, clone this repo and run `go install`. 
+Once you've done this, clone this repo and run `go install`. 
 
 ## Usage
 
@@ -12,7 +12,7 @@ place your bundled plugin and a JSON metadata file into `build/distributions`
 (relative to your plugin directory root). 
 
 This tool has one command: `plug serve --plugin-dir <path-to-build/distributions>`.
-This will start a server for your plugin.n
+This will start a server for your plugin.
 
 Inside your service config, you'll need to point to this server:
 
