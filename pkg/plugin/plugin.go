@@ -77,8 +77,8 @@ func (l *Loader) LoadMetadata() (*Metadata, error) {
 	// it should be the only one.
 	rel := m.Releases[0]
 	rel.URL = l.BinaryAddress
-
 	rel.Version = strings.TrimPrefix(rel.Version, "v")
+	rel.Version = strings.TrimSuffix(rel.Version, "-SNAPSHOT")
 
 	return &m, nil
 }
